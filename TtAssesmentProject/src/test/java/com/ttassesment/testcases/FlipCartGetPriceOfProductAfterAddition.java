@@ -27,7 +27,7 @@ public class FlipCartGetPriceOfProductAfterAddition extends BaseClass{
 	@Test
 	public void getTotalAmount() throws Exception {
 		 flipcartHomepage=new FlipcartHomePage();
-		 flipcartSearchResultPage=flipcartHomepage.flipcartSearchProduct("ipad");
+		 flipcartSearchResultPage=flipcartHomepage.flipcartSearchProduct("macbook air");//ipad
 		 flipcartAddToCartPage=flipcartSearchResultPage.flipcartClickFirstproduct();
 		Thread.sleep(2000);
 		flipcartCartPage=flipcartAddToCartPage.flipcartAddToCart();
