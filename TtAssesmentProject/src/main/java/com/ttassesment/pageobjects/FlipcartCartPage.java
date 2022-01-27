@@ -1,5 +1,6 @@
 package com.ttassesment.pageobjects;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -14,8 +15,7 @@ public class FlipcartCartPage extends BaseClass{
 	@FindBy(xpath = "(//button[@class='_23FHuj'])[2]")
 	WebElement flipcartIncreaseBtn;
 	
-	@FindBy(xpath = "//div[@class='Ob17DV _3X7Jj1']/span")
-	WebElement flipcartPriceEle;
+	By flipcartFinalPriceEle=By.xpath("//div[@class='Ob17DV _3X7Jj1']/span");
 	
 	public FlipcartCartPage() {
 		PageFactory.initElements(driver, this);
@@ -23,8 +23,6 @@ public class FlipcartCartPage extends BaseClass{
 	}
 	
 	public void flipcartIncreaseQuantity()throws InterruptedException {
-		System.out.println(driver.getTitle());
-
 		Action.click(driver, flipcartIncreaseBtn);
 		Thread.sleep(3000);
 		
@@ -32,22 +30,15 @@ public class FlipcartCartPage extends BaseClass{
 		
 	}
 	
-	public int flipcartProductPrice() {
-		String price= flipcartPriceEle.getText();
-		price=price.replaceAll("[^a-zA-Z0-9]", "");
-		int product_price = Integer.parseInt(price);
-		System.out.println("Total Amount:-"+ product_price);
-		return product_price;
+	public int flipcartCheckoutPrice() {
+		int final_Product_Price=Action.getPrice(flipcartFinalPriceEle);
+		System.out.println("Total Checkout Ammount:-"+ final_Product_Price);
+		return final_Product_Price;
 	
 	}
 	public AmazoneHomePage launchAmazone() {
-		Actions action =
-				  new Actions(driver);
-				  action.keyDown(Keys.CONTROL).sendKeys(Keys.TAB).build().perform(); //opening the URL saved. 
-				  driver.get("https://www.amazon.in/");
+		driver.get("https://www.amazon.in/");
 		Action.implicitWait(driver, 10);
-		  String parent=driver.getWindowHandle(); 
-		driver.switchTo().window(parent);	
 		return new AmazoneHomePage();
 	}
 	

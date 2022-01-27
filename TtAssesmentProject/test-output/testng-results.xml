@@ -2,24 +2,24 @@
 <testng-results skipped="0" failed="0" ignored="0" total="1" passed="1">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="57970" started-at="2022-01-25T00:47:00 IST" finished-at="2022-01-25T00:47:58 IST">
+  <suite name="Default suite" duration-ms="59216" started-at="2022-01-27T23:41:57 IST" finished-at="2022-01-27T23:42:56 IST">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="57970" started-at="2022-01-25T00:47:00 IST" finished-at="2022-01-25T00:47:58 IST">
+    <test name="Default test" duration-ms="59216" started-at="2022-01-27T23:41:57 IST" finished-at="2022-01-27T23:42:56 IST">
       <class name="com.ttassesment.testcases.CompareProductPrice">
-        <test-method status="PASS" signature="loadConfig()[pri:0, instance:com.ttassesment.testcases.CompareProductPrice@6ee52dcd]" name="loadConfig" is-config="true" duration-ms="13" started-at="2022-01-25T00:47:00 IST" finished-at="2022-01-25T00:47:00 IST">
+        <test-method status="PASS" signature="loadConfig()[pri:0, instance:com.ttassesment.testcases.CompareProductPrice@6ee52dcd]" name="loadConfig" is-config="true" duration-ms="11" started-at="2022-01-27T23:41:57 IST" finished-at="2022-01-27T23:41:57 IST">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- loadConfig -->
-        <test-method status="PASS" signature="setup()[pri:0, instance:com.ttassesment.testcases.CompareProductPrice@6ee52dcd]" name="setup" is-config="true" duration-ms="9607" started-at="2022-01-25T00:47:00 IST" finished-at="2022-01-25T00:47:10 IST">
+        <test-method status="PASS" signature="setup()[pri:0, instance:com.ttassesment.testcases.CompareProductPrice@6ee52dcd]" name="setup" is-config="true" duration-ms="10520" started-at="2022-01-27T23:41:57 IST" finished-at="2022-01-27T23:42:07 IST">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setup -->
-        <test-method status="PASS" signature="getPriceOnBothWebsite()[pri:0, instance:com.ttassesment.testcases.CompareProductPrice@6ee52dcd]" name="getPriceOnBothWebsite" duration-ms="47356" started-at="2022-01-25T00:47:10 IST" finished-at="2022-01-25T00:47:57 IST">
+        <test-method status="PASS" signature="getPriceOnBothWebsite()[pri:0, instance:com.ttassesment.testcases.CompareProductPrice@6ee52dcd]" name="getPriceOnBothWebsite" duration-ms="47693" started-at="2022-01-27T23:42:07 IST" finished-at="2022-01-27T23:42:55 IST">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- getPriceOnBothWebsite -->
-        <test-method status="PASS" signature="tearDown()[pri:0, instance:com.ttassesment.testcases.CompareProductPrice@6ee52dcd]" name="tearDown" is-config="true" duration-ms="948" started-at="2022-01-25T00:47:57 IST" finished-at="2022-01-25T00:47:58 IST">
+        <test-method status="PASS" signature="tearDown()[pri:0, instance:com.ttassesment.testcases.CompareProductPrice@6ee52dcd]" name="tearDown" is-config="true" duration-ms="941" started-at="2022-01-27T23:42:55 IST" finished-at="2022-01-27T23:42:56 IST">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->

@@ -2,7 +2,9 @@ package com.ttassesment.actiondriver;
 
 import java.util.concurrent.TimeUnit;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -20,64 +22,91 @@ public class Action extends BaseClass{
 
 	
 	public static void click(WebDriver driver, WebElement ele) {
-
+		try {
 		Actions act = new Actions(driver);
 		act.moveToElement(ele).click().build().perform();
+		System.out.println("sucessfully clicked on the element-"+ele);
+		}
+		catch(Exception e) {
+			System.out.println("Failed to click on the element-'"+ele+"' reason"+e);
+			throw e;
+		}
 
 	}
 	
 	public static void enterIntoTextBoxJs(WebElement ele, String text) {
 		JavascriptExecutor js = (JavascriptExecutor)driver;
-		js.executeScript("arguments[0].setAttribute('value', text)", ele);
-		
-		
+		js.executeScript("arguments[0].setAttribute('value', text)", ele);	
 	}
-	public static boolean type(WebElement ele, String text) {
-		boolean flag = false;
+	public static void enterIntoTextBoxJs(By locator,String value) {
 		try {
-			
-			flag = ele.isDisplayed();
-			ele.clear();
-			ele.sendKeys(text);
-			flag = true;
-		} catch (Exception e) {
-			System.out.println("Location Not found");
-			flag = false;
-		} finally {
-			if (flag) {
-				System.out.println("Successfully entered value");
-			} else {
-				System.out.println("Unable to enter value");
-			}
-
+		WebElement element=driver.findElement(locator);
+		explicitWait(driver, element, 5);
+		JavascriptExecutor js = (JavascriptExecutor)driver;
+		js.executeScript("arguments[0].value='"+value+"'", element);
+		System.out.println("Entered ='"+value+"' to the '"+locator+"' field");
+		
 		}
-		return flag;
-	}	
-	public static boolean JSClick(WebDriver driver, WebElement ele) {
-		boolean flag = false;
+		catch(Exception e) {
+			System.out.println("Failed to Enter ='"+value+"' to the '"+locator+"' field");
+			throw e;
+		}		
+	}
+	public static void type(WebElement ele, String text) {
 		try {
-			// WebElement element = driver.findElement(locator);
+			explicitWait(driver, ele, 10);
+			if(ele.isDisplayed()){
+				ele.clear();
+				ele.sendKeys(text);
+				System.out.println("Successfully entered value");
+
+			}
+			else {
+				System.out.println("Unable to enter value");
+
+			}
+			
+		} catch (Exception e) {
+			System.out.println(ele+"Location Not found,reason"+e);
+			throw e;
+			
+		} 
+
+	}	
+	public static void JSClick(WebDriver driver, WebElement ele) {
+		try {
 			JavascriptExecutor executor = (JavascriptExecutor) driver;
 			executor.executeScript("arguments[0].click();", ele);
-			// driver.executeAsyncScript("arguments[0].click();", element);
+			System.out.println("Click Action is performed");
 
-			flag = true;
 
 		}
-
 		catch (Exception e) {
+			System.out.println("Click Action is not performed");
 			throw e;
 
-		} finally {
-			if (flag) {
-				System.out.println("Click Action is performed");
-			} else if (!flag) {
-				System.out.println("Click Action is not performed");
-			}
-		}
-		return flag;
+		} 
+		
 	}
-
+	
+	public static void getFirstProduct(By locator) {
+		try {
+		WebElement ele=driver.findElement(locator);
+		explicitWait(driver, ele, 5);
+		String firstproductUrl=ele.getAttribute("href");
+		Actions action = new Actions(driver);
+		action.keyDown(Keys.CONTROL).sendKeys(Keys.TAB).build().perform(); // opening the URL saved.
+		driver.get(firstproductUrl); 
+		System.out.println("sucessfully clicked on the first product");
+		
+		}
+		catch(Exception e) {
+			System.out.println("Failed to get the first procuct"+e);
+			throw e;
+		}
+		
+		
+	}
 	
 	
 	public static void implicitWait(WebDriver driver, int timeOut) {
@@ -91,6 +120,15 @@ public class Action extends BaseClass{
 	
 	public static void pageLoadTimeOut(WebDriver driver, int timeOut) {
 		driver.manage().timeouts().pageLoadTimeout(timeOut, TimeUnit.SECONDS);
+	}
+	public static int getPrice(By locator) {
+		WebElement element=driver.findElement(locator);
+		String price=element.getText();
+		price=price.replaceAll("[^a-zA-Z0-9]", "");
+		int product_price = Integer.parseInt(price);
+		return product_price;
+		//System.out.println("Product Price:-"+product_price);
+		
 	}
 	
 	

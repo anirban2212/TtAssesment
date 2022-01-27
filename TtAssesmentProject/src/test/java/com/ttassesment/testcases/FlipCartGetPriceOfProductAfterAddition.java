@@ -30,11 +30,11 @@ public class FlipCartGetPriceOfProductAfterAddition extends BaseClass{
 		 flipcartSearchResultPage=flipcartHomepage.flipcartSearchProduct("macbook air");//ipad
 		 flipcartAddToCartPage=flipcartSearchResultPage.flipcartClickFirstproduct();
 		Thread.sleep(2000);
+		flipcartAddToCartPage.flipcartProductPrice();
 		flipcartCartPage=flipcartAddToCartPage.flipcartAddToCart();
 		Thread.sleep(5000);
 		flipcartCartPage.flipcartIncreaseQuantity();
-		flipcartCartPage.flipcartProductPrice();
-		//System.out.println(a);
+		flipcartCartPage.flipcartCheckoutPrice();
 		Thread.sleep(2000);
 		
 		

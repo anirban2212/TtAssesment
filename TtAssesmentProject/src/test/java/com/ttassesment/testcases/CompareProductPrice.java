@@ -38,17 +38,17 @@ public class CompareProductPrice extends BaseClass {
 	@Test
 	public void getPriceOnBothWebsite() throws Exception {
 		flipcartHomepage = new FlipcartHomePage();
-		flipcartSearchResultPage = flipcartHomepage.flipcartSearchProduct("iphone 12 mini");
+		flipcartSearchResultPage = flipcartHomepage.flipcartSearchProduct("macbook pro");//iphone 12 mini
 		flipcartAddToCartPage = flipcartSearchResultPage.flipcartClickFirstproduct();
 		Thread.sleep(2000);
-		flipcartAddToCartPage.flipcartProductPriceFromAddToCartPage();
+		flipcartAddToCartPage.flipcartProductPrice();
 		flipcartCartPage = flipcartAddToCartPage.flipcartAddToCart();
 		Thread.sleep(5000);
-		int flipcartPrice = flipcartCartPage.flipcartProductPrice(); // System.out.println(a);
+		int flipcartPrice = flipcartCartPage.flipcartCheckoutPrice(); 
 		
 		  amazoneHomepage=flipcartCartPage.launchAmazone(); 
 		  Thread.sleep(3000);
-		  amazonesearchResultPage=amazoneHomepage.amazoneSearchProduct();
+		  amazonesearchResultPage=amazoneHomepage.amazoneSearchProduct("macbook pro");
 		  
 		  Thread.sleep(3000);
 		  amazoneAddToCartPage=amazonesearchResultPage.amazoneClickFirstProduct();
@@ -57,10 +57,15 @@ public class CompareProductPrice extends BaseClass {
 		  Thread.sleep(5000);
 		  int amazonePrice=amazoneCartPage.amazoneProductPriceFromCartPage();
 		  
-		if(flipcartPrice>=amazonePrice) {
+		if(flipcartPrice>amazonePrice) {
 			System.out.println("Amazone is giving much better deal");
 			
-		}  
+		} 
+		else if(flipcartPrice==amazonePrice){
+			System.out.println("Both sites have same price");
+
+			
+		}
 		else {
 			System.out.println("Flipcart is giving much better deal");
 		}

@@ -2,6 +2,7 @@ package com.ttassesment.pageobjects;
 
 import java.util.ArrayList;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -12,8 +13,7 @@ import com.ttassesment.base.BaseClass;
 public class AmazoneAddToCartPage extends BaseClass{
 	@FindBy(xpath = "//input[@id='add-to-cart-button']")
 	WebElement amazoneAddToCartBtn;
-	@FindBy(xpath = "(//span[@class='a-price a-text-price a-size-medium apexPriceToPay']/span)[2]")
-	WebElement amazonePriceEle;
+	By amazonePriceEle=By.xpath("(//span[@class='a-price a-text-price a-size-medium apexPriceToPay']/span)[2]");
 	@FindBy(xpath = "//*[@id=\"attach-sidesheet-view-cart-button\"]/span/input")
 	WebElement CartBtn;
 	
@@ -42,11 +42,8 @@ public class AmazoneAddToCartPage extends BaseClass{
 	}
 	public int amazoneProductPriceFromAddToCartPage() {
 		
-		String price= amazonePriceEle.getText();
-		price=price.replaceAll("[^a-zA-Z0-9]", "");
-		int a = Integer.parseInt(price);
+		int a=Action.getPrice(amazonePriceEle);
 		int product_price=a/100;
-		
 		System.out.println("Product Price:-"+ product_price);
 		
 		return product_price;

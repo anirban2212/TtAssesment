@@ -18,13 +18,8 @@ public class FlipcartHomePage extends BaseClass{
 	WebElement amazoneSearchBox;
 	@FindBy(xpath = "//input[@type='submit' and @id='nav-search-submit-button']")
 	WebElement amazoneSearchBtn;
-	
-	
-	
-	
-	
 	//initialize all the page objects of this particular class
-		//when we call the obj of this particular class then this contructor will be called and all the obj will be initialied
+	//when we call the obj of this particular class then this contructor will be called and all the obj will be initialied
 	
 	public FlipcartHomePage() {
 		PageFactory.initElements(driver, this);
